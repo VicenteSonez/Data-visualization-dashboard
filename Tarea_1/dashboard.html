@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Análisis Multidimensional de Ingresos en Chile - CASEN 2024</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 6mm 6mm 4mm 6mm;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #2D3748;
+            background-color: #fff;
+            box-sizing: border-box;
+            font-size: 10px;
+            overflow: hidden; /* Prevent extra pages */
+            line-height: 1.25;
+        }
+        header {
+            text-align: center;
+            border-bottom: 2px solid #E76F51;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+        }
+        h1 {
+            margin: 0 0 2px 0;
+            font-size: 15px;
+            color: #2C3E50;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+        .authors {
+            font-size: 9.5px;
+            color: #718096;
+            font-style: italic;
+            font-weight: 500;
+        }
+        .plots-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            height: 67vh; /* Keeps height bounded for A4 vertical printing */
+        }
+        .plot-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 4px;
+            padding: 0; /* No padding so the images are strictly aligned to the borders */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .plot-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Standardized aspect ratio images will fit and align perfectly */
+        }
+        .legend-section {
+            background-color: #FAF6F3;
+            border-top: 3px solid #1A365D; /* Dark blue line from example */
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin-top: 10px;
+        }
+        .legend-text {
+            font-size: 8.5px;
+            line-height: 1.4;
+            color: #2D3748;
+            text-align: justify;
+            margin-bottom: 5px;
+        }
+        .legend-text strong {
+            color: #1A365D;
+        }
+        .synthesis-section {
+            font-size: 8.5px;
+            line-height: 1.4;
+            color: #2D3748;
+            text-align: justify;
+            margin-bottom: 5px;
+        }
+        .synthesis-section strong {
+            color: #1A365D;
+        }
+        .note-section {
+            font-size: 7.5px;
+            color: #4A5568;
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+        .source-section {
+            font-size: 7.5px;
+            color: #718096;
+            display: flex;
+            justify-content: space-between;
+            border-top: 0.5px solid #E2E8F0;
+            padding-top: 3px;
+        }
+        .casen-meta {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Análisis multidimensional de ingresos en Chile • CASEN 2024</h1>
+        <div class="authors">Autores: Vicente Soñez Ibañez, Rafael Fernández Castellón, Pedro Dañobeytia Gómez</div>
+    </header>
+
+    <div class="plots-grid">
+        <div class="plot-card">
+            <img src="figures/plot1.png" alt="Escolaridad y Quintil">
+        </div>
+        <div class="plot-card">
+            <img src="figures/plot2.png" alt="Sueldo por Área y Género">
+        </div>
+        <div class="plot-card">
+            <img src="figures/plot3.png" alt="Brecha por Macrozona y Quintil">
+        </div>
+        <div class="plot-card">
+            <img src="figures/plot4.png" alt="Ingresos por Vulnerabilidad">
+        </div>
+        <div class="plot-card">
+            <img src="figures/plot5.png" alt="Educación por Zona">
+        </div>
+        <div class="plot-card">
+            <img src="figures/plot6.png" alt="Brecha Salarial por Edad">
+        </div>
+    </div>
+
+    <div class="legend-section">
+        <div class="legend-text">
+            <strong>(1.) Flujo educativo a quintiles (Sankey):</strong> Distribución de personas ocupadas desde sus niveles de escolaridad hacia los quintiles de ingresos autónomos correspondientes. 
+            <strong>(2.) Sueldo por área y género (Dumbbell):</strong> Ingreso de trabajo promedio mensual de la población con educación superior según su área de estudio, diferenciado por sexo. 
+            <strong>(3.) Brecha por macrozona y quintil (heatmap):</strong> Diferencia porcentual de ingresos por género para cada macrozona del país según su quintil de ingresos. 
+            <strong>(4.) Ingresos por vulnerabilidad (stacked bar):</strong> Proporción de personas con ingresos mayores y menores o iguales a $1.5M, distribuidas según el nivel de vulnerabilidad de la zona donde habitan. 
+            <strong>(5.) Educación por zona (treemap):</strong> Distribución proporcional de la población ocupada según su nivel de educación formal y su área geográfica (urbana o rural). 
+            <strong>(6.) Brecha salarial por edad (línea):</strong> Evolución del ingreso de trabajo promedio de hombres y mujeres ocupados en relación con su edad.
+        </div>
+        <div class="note-section">
+            * La brecha salarial se define como la diferencia porcentual entre el ingreso promedio de hombres y mujeres respecto al ingreso promedio de hombres.
+        </div>
+        <div class="source-section">
+            <span>Fuente: Ministerio de desarrollo social y familia. (2025). Encuesta de caracterización socioeconómica nacional (CASEN) 2024. Gobierno de Chile.CASEN 2024: 78.654 hogares y 218.367 personas encuestadas a nivel nacional.</span>
+        </div>
+    </div>
+
+</body>
+</html>
