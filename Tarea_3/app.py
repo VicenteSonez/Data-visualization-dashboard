@@ -64,15 +64,26 @@ st.markdown("**Autores**: Vicente Soñez Ibañez, Rafael Fernández Castellón, 
 def load_data():
     import os
     current_dir = os.path.abspath(os.path.dirname(__file__))
+    base_dir = os.path.dirname(current_dir)
     
-    # Determinar si estamos en Tarea_3 o en la raíz
-    if os.path.basename(current_dir) == 'Tarea_3':
-        data_dir = os.path.join(os.path.dirname(current_dir), 'Data')
-    else:
-        data_dir = os.path.join(current_dir, 'Data')
+    # Búsqueda resiliente (útil para servidores Linux que son sensibles a mayúsculas/minúsculas)
+    posibles_rutas_parquet = [
+        os.path.join(base_dir, 'Data', 'casen_2024.parquet'),
+        os.path.join(base_dir, 'data', 'casen_2024.parquet'),
+        os.path.join(current_dir, 'Data', 'casen_2024.parquet'),
+        os.path.join(current_dir, 'data', 'casen_2024.parquet')
+    ]
+    
+    parquet_path = None
+    for ruta in posibles_rutas_parquet:
+        if os.path.exists(ruta):
+            parquet_path = ruta
+            break
+            
+    if parquet_path is None:
+        raise FileNotFoundError("No se encontró 'casen_2024.parquet'. Por favor asegúrate de haber subido la carpeta 'Data' a tu repositorio de GitHub.")
         
-    parquet_path = os.path.join(data_dir, 'casen_2024.parquet')
-    geojson_path = os.path.join(data_dir, 'regiones.geojson')
+    geojson_path = parquet_path.replace('casen_2024.parquet', 'regiones.geojson')
 
     df = pd.read_parquet(parquet_path)
     try:
